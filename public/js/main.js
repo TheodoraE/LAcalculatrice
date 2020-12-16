@@ -24,7 +24,8 @@ divs[0].append(h1);
 
 // Div 2 = Input et Clear
 let input = document.createElement('input');
-input.setAttribute('type', "number")
+input.setAttribute('type', "text");
+input.setAttribute('disabled', "");
 let clearButton = document.createElement('button');
 
 divs[1].append(input, clearButton)
@@ -125,7 +126,7 @@ for (let i = 0; i < boutons.length; i++) {
             boutons[14].innerHTML = ".";
             break;
         case 15:
-            boutons[15].setAttribute('class', "operations");
+            boutons[15].setAttribute('id', "egal");
             boutons[15].innerHTML = "=";
             break;
         case 16:
@@ -172,23 +173,112 @@ for (let i = 0; i < boutons.length; i++) {
 let chiffres = document.querySelectorAll('.chiffres');
 
 for (let i = 0; i < chiffres.length; i++) {
-    
-    
+    switch(i){
+        case 0:
+            chiffres[0].value = "7";
+            break;
+        case 1:
+            chiffres[1].value = "8";
+            break;
+        case 2:
+            chiffres[2].value = "9";
+            break;
+        case 3:
+            chiffres[3].value = "4";
+            break;
+        case 4:
+            chiffres[4].value = "5";
+            break;
+        case 5:
+            chiffres[5].value = "6";
+            break;
+        case 6:
+            chiffres[6].value = "1";
+            break;
+        case 7:
+            chiffres[7].value = "2";
+            break;
+        case 8:
+            chiffres[8].value = "3";
+            break;
+        case 9:
+            chiffres[9].value = "0";
+            break;
+        case 10:
+            chiffres[10].value = ".";
+            break;
+    }
 }
 
+// Les operations
 let operations = document.querySelectorAll('.operations');
+let operateur = "";
+
+for (let i = 0; i < operations.length; i++) {
+    switch(i){
+        case 0:
+            operations[0].value = "/";
+            break;
+        case 1:
+            operations[1].value = "*";
+            break;
+        case 2:
+            operations[2].value = "-";
+            break;
+        case 3:
+            operations[3].value = "+";
+            break;
+    };
+
+    operations[i].addEventListener('click', function(){
+        operateur = this.value;
+        input.value = operateur;
+    })
+}
+
+// Bouton Clear
 let clear = document.querySelector('#clear');
-console.log(chiffres)
+clear.addEventListener('click', function(){
+    input.value = "";
+})
 
-
+// Les valeurs
 let value1;
 let value2;
-let reponse;
+let egal = document.querySelector('#egal');
 
 for (let i = 0; i < chiffres.length; i++) {
     chiffres[i].addEventListener('click', function (){
-        input.value += Number(boutons[i].value);
-        value1 = Number(input.value);
+        if (operateur == ""){
+            input.value += chiffres[i].value;
+            value1 = Number(input.value);
+        } else{
+            input.value += chiffres[i].value;
+            value2 = Number(input.value.substr(1, input.value.length));
+        }
     })
-    
 }
+
+// Calcul
+egal.addEventListener('click', function(){
+    switch(operateur){
+        case "+":
+            input.value = value1 + value2;
+            break;
+        case "-":
+            input.value = value1 - value2;
+            break;
+        case "*":
+            input.value = value1 * value2;
+            break;
+        case "/":
+            input.value = value1 / value2;
+            break;
+    }
+})
+
+//// Touches de clavier
+
+// ((KeyCode >= 48 && KeyCode <= 87) )
+// point = 190 et virgule = 188
+// égal = 187
