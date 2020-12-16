@@ -233,6 +233,7 @@ for (let i = 0; i < operations.length; i++) {
     operations[i].addEventListener('click', function(){
         operateur = this.value;
         input.value = operateur;
+        console.log(operateur)
     })
 }
 
@@ -240,6 +241,9 @@ for (let i = 0; i < operations.length; i++) {
 let clear = document.querySelector('#clear');
 clear.addEventListener('click', function(){
     input.value = "";
+    value1 = "";
+    value2 = "";
+    operateur = "";
 })
 
 // Les valeurs
@@ -252,9 +256,11 @@ for (let i = 0; i < chiffres.length; i++) {
         if (operateur == ""){
             input.value += chiffres[i].value;
             value1 = Number(input.value);
+            console.log(value1)
         } else{
             input.value += chiffres[i].value;
             value2 = Number(input.value.substr(1, input.value.length));
+            console.log(value2)
         }
     })
 }
@@ -264,20 +270,33 @@ egal.addEventListener('click', function(){
     switch(operateur){
         case "+":
             input.value = value1 + value2;
+            console.log(input.value)
             break;
         case "-":
             input.value = value1 - value2;
+            console.log(input.value)
             break;
         case "*":
             input.value = value1 * value2;
+            console.log(input.value)
             break;
         case "/":
             input.value = value1 / value2;
+            console.log(input.value)
             break;
     }
+    value1 = "";
+    value2 = "";
+    operateur = "";
 })
 
+
+/////////////////////////////////////
 //// Touches de clavier
+body.addEventListener('keydown', function(e){
+    input.disabled = false;
+
+})
 
 // ((KeyCode >= 48 && KeyCode <= 87) )
 // point = 190 et virgule = 188
