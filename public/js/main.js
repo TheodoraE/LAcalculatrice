@@ -144,9 +144,11 @@ body.style.display = "flex";
 body.style.justifyContent = "center";
 body.style.alignItems = "center";
 
-section.style.width ="250px"
+section.style.width ="300px"
 section.style.border = "2px black solid";
-section.style.padding = "4%";
+section.style.padding = "3%";
+section.style.backgroundColor = "lightblue";
+section.style.borderRadius = "5px";
 
 for (let i = 0; i < divs.length; i++) {
     divs[i].style.display = "flex";
@@ -157,14 +159,19 @@ h1.style.fontFamily = "Arial";
 h1.style.marginTop = "0%";
 h1.style.textAlign = "center";
 
-input.style.height = "30px";
-input.style.width = "150px";
-input.style.margin = "2% 4% 1% 2%";
+input.style.fontSize = "26px"
+input.style.textAlign = "end"
+input.style.height = "40px";
+input.style.width = "180px";
+input.style.margin = "3% 4% 1% 2%";
 
 for (let i = 0; i < boutons.length; i++) {
     boutons[i].style.padding = "4% 8%";
-    boutons[i].style.margin = "1.5%";
-}
+    boutons[i].style.margin = "2%";
+    boutons[i].style.fontSize = "22px"
+};
+
+boutons[14].style.padding = "3% 9% 4% 8.5%"
 
 /////////////////////////////////////////////
 /////////////// Mise en fonction ///////////
